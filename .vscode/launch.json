@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File in File Directory",
+            "type": "python",
+            "request": "launch",
+            "program": "${fileBasename}",
+            "cwd": "${fileDirname}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: demo",
+            "type": "python",
+            "request": "launch",
+            "program": "../src/demo.py",
+            "preLaunchTask": "make tmp folder",
+            "cwd": "${workspaceFolder}/tmp-${env:HOSTNAME}",
+            "env": {
+                "DISPLAY": ":1.0"
+            },
+            "console": "integratedTerminal",
+            "args": [
+                "ctdet",
+                "--load_model",
+                "../models/ctdet_coco_dla_2x.pth",
+                "--demo",
+                "../data/road/rgb-images/2014-06-25-16-45-34_stereo_centre_02",
+            ]
+        }
+    ]
+}

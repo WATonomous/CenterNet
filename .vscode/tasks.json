@@ -1,0 +1,10 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make tmp folder",
+            "type": "shell",
+            "command": "mkdir -p ${workspaceFolder}/tmp-${HOSTNAME}"
+        },
+    ]
+}
