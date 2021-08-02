@@ -1,0 +1,3 @@
+[submodule "docker-vnc"]
+	path = docker-vnc
+	url = https://github.com/fcwu/docker-ubuntu-vnc-desktop.git
