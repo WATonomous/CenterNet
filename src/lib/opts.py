@@ -27,6 +27,8 @@ class opts(object):
     self.parser.add_argument('--demo', default='', 
                              help='path to image/ image folders/ video. '
                                   'or "webcam"')
+    self.parser.add_argument('--demo_output', default=None, 
+                             help='path to a directory where demo output will be stored. This directory will be created if it doesn\'t exist already. By default demo results will not be stored.')
     self.parser.add_argument('--load_model', default='',
                              help='path to pretrained model')
     self.parser.add_argument('--resume', action='store_true',
