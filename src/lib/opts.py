@@ -13,14 +13,14 @@ class opts(object):
     self.parser.add_argument('task', default='ctdet',
                              help='ctdet | ddd | multi_pose | exdet')
     self.parser.add_argument('--dataset', default='coco',
-                             help='coco | kitti | coco_hp | pascal')
+                             help='coco | kitti | coco_hp | pascal | road')
     self.parser.add_argument('--exp_id', default='default')
     self.parser.add_argument('--test', action='store_true')
     self.parser.add_argument('--debug', type=int, default=0,
                              help='level of visualization.'
                                   '1: only show the final detection results'
                                   '2: show the network output features'
-                                  '3: use matplot to display' # useful when lunching training with ipython notebook
+                                  '3: use matplot to display' # useful when launching training with ipython notebook
                                   '4: save all visualizations to disk')
     self.parser.add_argument('--demo', default='', 
                              help='path to image/ image folders/ video. '

@@ -30,6 +30,39 @@
                 "--demo",
                 "../data/road/rgb-images/2014-06-25-16-45-34_stereo_centre_02",
             ]
-        }
+        },
+        {
+            "name": "Python: train",
+            "type": "python",
+            "request": "launch",
+            "program": "../src/main.py",
+            "preLaunchTask": "make tmp folder",
+            "cwd": "${workspaceFolder}/tmp-${env:HOSTNAME}",
+            "env": {
+                "DISPLAY": ":1.0"
+            },
+            "console": "integratedTerminal",
+            "args": [
+                "ctdet",
+                "--exp_id",
+                "road-${env:HOSTNAME}",
+                "--batch_size",
+                "1",
+                "--master_batch",
+                "9",
+                "--lr",
+                "5e-4",
+                "--gpus",
+                "0",
+                "--num_workers",
+                "1",
+                "--num_epochs",
+                "230",
+                "--lr_step",
+                "180,210",
+                "--dataset",
+                "road"
+            ]
+        },
     ]
 }
