@@ -47,6 +47,7 @@ class ROAD(data.Dataset):
     self.max_objs = 30
     self._valid_ids = self.coco.cats.keys()
     self.class_name = [self.coco.cats[i]['name'] for i in self._valid_ids]
+    assert(self.num_classes == len(self.class_name))
     self.cat_ids = {v: i for i, v in enumerate(self._valid_ids)}
     self.voc_color = [(v // 32 * 64 + 64, (v // 8) % 4 * 64, v % 8 * 32) \
                       for v in range(1, self.num_classes + 1)]

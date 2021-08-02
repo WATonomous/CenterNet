@@ -26,6 +26,8 @@ def demo(opt):
     detector.pause = False
     while True:
         _, img = cam.read()
+        if img is None:
+          break
         cv2.imshow('input', img)
         ret = detector.run(img)
         time_str = ''
@@ -35,6 +37,7 @@ def demo(opt):
         if cv2.waitKey(1) == 27:
             return  # esc to quit
   else:
+    detector.pause = False # comment this out to step through frame by frame
     if os.path.isdir(opt.demo):
       image_names = []
       ls = os.listdir(opt.demo)

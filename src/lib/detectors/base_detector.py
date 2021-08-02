@@ -11,6 +11,7 @@ import torch
 from models.model import create_model, load_model
 from utils.image import get_affine_transform
 from utils.debugger import Debugger
+from datasets.dataset_factory import get_dataset
 
 
 class BaseDetector(object):
@@ -33,6 +34,7 @@ class BaseDetector(object):
     self.scales = opt.test_scales
     self.opt = opt
     self.pause = True
+    self.dataset_obj = None
 
   def pre_process(self, image, scale, meta=None):
     height, width = image.shape[0:2]
@@ -82,7 +84,9 @@ class BaseDetector(object):
   def run(self, image_or_path_or_tensor, meta=None):
     load_time, pre_time, net_time, dec_time, post_time = 0, 0, 0, 0, 0
     merge_time, tot_time = 0, 0
-    debugger = Debugger(dataset=self.opt.dataset, ipynb=(self.opt.debug==3),
+    if self.dataset_obj is None:
+      self.dataset_obj = get_dataset(self.opt.dataset, self.opt.task)(self.opt,'val')
+    debugger = Debugger(dataset=self.opt.dataset,dataset_obj=self.dataset_obj, ipynb=(self.opt.debug==3),
                         theme=self.opt.debugger_theme)
     start_time = time.time()
     pre_processed = False

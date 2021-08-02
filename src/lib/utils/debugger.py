@@ -8,7 +8,7 @@ from .ddd_utils import compute_box_3d, project_to_image, draw_box_3d
 
 class Debugger(object):
   def __init__(self, ipynb=False, theme='black', 
-               num_classes=-1, dataset=None, down_ratio=4):
+               num_classes=-1, dataset=None,dataset_obj=None, down_ratio=4):
     self.ipynb = ipynb
     if not self.ipynb:
       import matplotlib.pyplot as plt
@@ -22,7 +22,9 @@ class Debugger(object):
       self.colors = self.colors.reshape(-1)[::-1].reshape(len(colors), 1, 1, 3)
       self.colors = np.clip(self.colors, 0., 0.6 * 255).astype(np.uint8)
     self.dim_scale = 1
-    if dataset == 'coco_hp':
+    if dataset_obj is not None:
+      self.names = dataset_obj.class_name
+    elif dataset == 'coco_hp':
       self.names = ['p']
       self.num_class = 1
       self.num_joints = 17

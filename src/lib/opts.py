@@ -5,6 +5,8 @@ from __future__ import print_function
 import argparse
 import os
 import sys
+from datasets.dataset_factory import get_dataset
+
 
 class opts(object):
   def __init__(self):
@@ -356,7 +358,10 @@ class opts(object):
         for k, v in entries.items():
           self.__setattr__(k, v)
     opt = self.parse(args)
-    dataset = Struct(default_dataset_info[opt.task])
-    opt.dataset = dataset.dataset
+    if opt.dataset is not None:
+      dataset = get_dataset(opt.dataset, opt.task)
+    else:
+      dataset = Struct(default_dataset_info[opt.task])
+      opt.dataset = dataset.dataset
     opt = self.update_dataset_info_and_set_heads(opt, dataset)
     return opt

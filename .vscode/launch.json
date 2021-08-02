@@ -26,9 +26,14 @@
             "args": [
                 "ctdet",
                 "--load_model",
-                "../models/ctdet_coco_dla_2x.pth",
+                // "../models/ctdet_coco_dla_2x.pth",
+                "../exp/ctdet/road-centernet_ben_dev_thor-vm1/model_last.pth",
+                "--dataset",
+                "road",
                 "--demo",
-                "../data/road/rgb-images/2014-06-25-16-45-34_stereo_centre_02",
+                // "../data/road/rgb-images/2014-06-25-16-45-34_stereo_centre_02",
+                // "../data/road/test-set/2015-02-03-08-45-10_stereo_centre_04.mp4",
+                "../data/road/test-set/2014-06-26-09-31-18_stereo_centre_02.mp4"
             ]
         },
         {
