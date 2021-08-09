@@ -51,17 +51,17 @@ validation_epochs = 0:VALIDATION_LOSS_INTERVAL:num_epochs;
 validation_epochs = validation_epochs(2:end);
 num_validation_epochs = idivide(num_epochs, int16(VALIDATION_LOSS_INTERVAL));
 
-plot(1:num_epochs,training_loss_from_scratch(1:num_epochs),'Color','#0072BD')
+plot(1:num_epochs,training_loss_from_scratch(1:num_epochs),'Color','#0072BD','LineWidth',1.5)
 hold on
-plot(validation_epochs,validation_loss_from_scratch(1:num_validation_epochs),'Color','#0072BD','Marker','o','LineStyle','none')
-plot(1:num_epochs,training_loss_transfer_learning(1:num_epochs),'Color','#D95319')
-plot(validation_epochs,validation_loss_transfer_learning(1:num_validation_epochs),'Color','#D95319','Marker','o','LineStyle','none');
+plot(validation_epochs,validation_loss_from_scratch(1:num_validation_epochs),'Color','#0072BD','Marker','o','LineStyle','none','LineWidth',1.5)
+plot(1:num_epochs,training_loss_transfer_learning(1:num_epochs),'Color','#e07e33','LineWidth',1.5)
+plot(validation_epochs,validation_loss_transfer_learning(1:num_validation_epochs),'Color','#e07e33','Marker','o','LineStyle','none','LineWidth',1.5);
 legend([
     "training loss (from scratch)"
     "validation loss (from scratch)"
     "training loss (transfer learning)"
     "validation loss (transfer learning)"
-],'Location','northwest')
+],'Location','northwest','FontSize',14)
 xlabel("Epoch")
 ylabel("Loss")
 hold off
