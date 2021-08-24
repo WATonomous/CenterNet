@@ -116,7 +116,9 @@ def main():
                'action_ids': [x + 1 for x in annotation['duplex_ids']],
                'action_ids': [x + 1 for x in annotation['triplet_ids']],
                'bbox': bbox_road_to_coco(annotation['box'], frame_Dict['width'], frame_Dict['height']),
-               'track_id': int(annotation['tube_uid'], 16)
+               'track_id': int(annotation['tube_uid'], 16),
+               'iscrowd': 0, # there is a concept of "crowd" in coco but not in ROAD
+               'area': 0 # in coco there's semantic segmentation area
         }
         for split in video_splits:
           splits[split]['annotations'].append(coco_annotation)
