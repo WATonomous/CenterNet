@@ -26,8 +26,7 @@
             "args": [
                 "ctdet",
                 "--load_model",
-                // "../models/ctdet_coco_dla_2x.pth",
-                "../exp/ctdet/road-centernet_ben_dev_thor-vm1/model_last.pth",
+                 "../models/ctdet_coco_dla_2x.pth",
                 "--dataset",
                 "road",
                 "--demo",
@@ -67,6 +66,28 @@
                 "230",
                 "--lr_step",
                 "180,210",
+                "--dataset",
+                "road"
+            ]
+        },
+        {
+            "name": "Python: test",
+            "type": "python",
+            "request": "launch",
+            "program": "../src/test.py",
+            "preLaunchTask": "make tmp folder",
+            "cwd": "${workspaceFolder}/tmp-${env:HOSTNAME}",
+            "env": {
+                "DISPLAY": ":1.0"
+            },
+            "console": "integratedTerminal",
+            "args": [
+                "ctdet",
+                "--exp_id",
+                "road-centernet_thor-vm1",
+                "--keep_res",
+                "--load_model",
+                "../exp/ctdet/road-centernet_thor-vm1/model_best.pth",
                 "--dataset",
                 "road"
             ]
