@@ -45,7 +45,7 @@ class ROAD(data.Dataset):
     self.coco = coco.COCO(self.annot_path)
     # self.coco.dataset['']
     self.max_objs = 30
-    self._valid_ids = self.coco.cats.keys()
+    self._valid_ids = list(self.coco.cats.keys())
     self.class_name = [self.coco.cats[i]['name'] for i in self._valid_ids]
     assert(self.num_classes == len(self.class_name))
     self.cat_ids = {v: i for i, v in enumerate(self._valid_ids)}
