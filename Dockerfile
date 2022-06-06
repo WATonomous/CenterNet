@@ -123,7 +123,8 @@ RUN apt-get install -y --no-install-recommends \
   tk-dev \
   libffi-dev \
   liblzma-dev \
-  protobuf-compiler
+  protobuf-compiler \
+  python3.6-distutils 
 
 
 # python lib
